@@ -1,5 +1,6 @@
-import Routing from '../router';
+import Layout from './Layout';
+import Navigation from './Navigation';
 import VehicleForm from './VehicleForm';
 import VehicleTable from './VehicleTable';
 
-export { Routing, VehicleForm, VehicleTable };
+export { Layout, Navigation, VehicleForm, VehicleTable };

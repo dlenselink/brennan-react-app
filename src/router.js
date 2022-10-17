@@ -1,22 +1,42 @@
-import { Navigate, createBrowserRouter } from 'react-router-dom';
-import { HomePage, VehiclesPage, FavoritesPage } from 'pages';
+import { createBrowserRouter, Outlet, Navigate } from 'react-router-dom';
+import { Layout } from 'components';
+import { AddVehiclesPage, EditVehiclesPage, HomePage, FavoritesPage } from 'pages';
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <HomePage />,
-  },
-  {
-    path: '/vehicles',
-    element: <VehiclesPage />,
-  },
-  {
-    path: '/favorites',
-    element: <FavoritesPage />,
-  },
-  {
-    path: '*',
-    element: <Navigate to="/" />,
+    element: <Layout />,
+    children: [
+      {
+        path: '/',
+        element: <HomePage />,
+      },
+      {
+        path: '/vehicles',
+        element: <Outlet />,
+        children: [
+          {
+            path: 'add',
+            element: <AddVehiclesPage />,
+          },
+          {
+            path: 'edit',
+            element: <EditVehiclesPage />,
+          },
+          {
+            path: '',
+            element: <Navigate to="/vehicles/edit" />,
+          },
+        ],
+      },
+      {
+        path: '/favorites',
+        element: <FavoritesPage />,
+      },
+      {
+        path: '*',
+        element: <Navigate to="/" />,
+      },
+    ],
   },
 ]);
 

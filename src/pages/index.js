@@ -1,5 +1,6 @@
+import AddVehiclesPage from './AddVehiclesPage';
+import EditVehiclesPage from './EditVehiclesPage';
 import HomePage from './HomePage';
-import VehiclesPage from './VehiclesPage';
 import FavoritesPage from './FavoritesPage';
 
-export { HomePage, VehiclesPage, FavoritesPage };
+export { AddVehiclesPage, EditVehiclesPage, HomePage, FavoritesPage };
