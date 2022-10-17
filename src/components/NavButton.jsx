@@ -8,7 +8,7 @@ const NavButton = ({ text, isHighlighted, onClick }) => (
     sx={{
       margin: '0 8px',
       padding: '8px 12px',
-      color: (theme) => (isHighlighted ? theme.palette.primary.main : 'white'),
+      color: (theme) => (isHighlighted ? theme.palette.primary.dark : 'white'),
       '&:hover': {
         '&::after': {
           content: '""',
@@ -16,7 +16,7 @@ const NavButton = ({ text, isHighlighted, onClick }) => (
           bottom: 0,
           left: 0,
           right: 0,
-          background: 'white',
+          background: (theme) => theme.palette.primary.dark,
           height: '2px',
           borderRadius: '0 6px 6px 0',
         },
