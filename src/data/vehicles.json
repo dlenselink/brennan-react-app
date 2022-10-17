@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "makeName": "Ford",
+    "vehicleModelList": [
+      {
+        "id": 1,
+        "vehicleModelName": "Bronco",
+        "vehicleList": [
+          {
+            "id": 1,
+            "year": 2000,
+            "licensePlate": "ZIT-554",
+            "vin": "44977865444",
+            "color": "Gray",
+            "purchasePrice": 35000
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "makeName": "Chevrolet",
+    "vehicleModelList": [
+      {
+        "id": 2,
+        "vehicleModelName": "TrailBlazer",
+        "vehicleList": [
+          {
+            "id": 2,
+            "year": 2010,
+            "licensePlate": "TUB-812",
+            "vin": "444555667",
+            "color": "Blue",
+            "purchasePrice": 40000
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "makeName": "Honda",
+    "vehicleModelList": [
+      {
+        "id": 3,
+        "vehicleModelName": "CRV",
+        "vehicleList": [
+          {
+            "id": 3,
+            "year": 2015,
+            "licensePlate": "PAF-892",
+            "vin": "555343434",
+            "color": "Black",
+            "purchasePrice": 30000
+          }
+        ]
+      }
+    ]
+  }
+]
