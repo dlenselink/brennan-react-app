@@ -34,47 +34,34 @@ const VehicleTable = ({ type, rowData }) => (
           </TableRow>
         </TableHead>
         <TableBody>
-          {rowData.map(
-            ({
-              id,
-              isFavorite,
-              year,
-              make,
-              model,
-              color,
-              vin,
-              // onEditClick,
-              // onDeleteClick,
-              // onFavoriteClick,
-            }) => (
-              <TableRow key={id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell component="th" scope="row">
-                  <IconButton>
-                    {isFavorite ? <FavoriteIcon color="error" /> : <FavoriteBorderIcon />}
-                  </IconButton>
-                </TableCell>
-                <TableCell align="right">{year}</TableCell>
-                <TableCell align="right">{make}</TableCell>
-                <TableCell align="right">{model}</TableCell>
-                <TableCell align="right">{color}</TableCell>
-                <TableCell align="right">{vin}</TableCell>
-                {type === 'manage' && (
-                  <>
-                    <TableCell align="right">
-                      <IconButton sx={{ paddingRight: 0 }}>
-                        <EditIcon />
-                      </IconButton>
-                    </TableCell>
-                    <TableCell align="right">
-                      <IconButton>
-                        <DeleteIcon color="error" />
-                      </IconButton>
-                    </TableCell>
-                  </>
-                )}
-              </TableRow>
-            )
-          )}
+          {rowData.map(({ id, isFavorite, year, make, model, color, vin }) => (
+            <TableRow key={id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+              <TableCell component="th" scope="row">
+                <IconButton>
+                  {isFavorite ? <FavoriteIcon color="error" /> : <FavoriteBorderIcon />}
+                </IconButton>
+              </TableCell>
+              <TableCell align="right">{year}</TableCell>
+              <TableCell align="right">{make}</TableCell>
+              <TableCell align="right">{model}</TableCell>
+              <TableCell align="right">{color}</TableCell>
+              <TableCell align="right">{vin}</TableCell>
+              {type === 'manage' && (
+                <>
+                  <TableCell align="right">
+                    <IconButton sx={{ paddingRight: 0 }}>
+                      <EditIcon />
+                    </IconButton>
+                  </TableCell>
+                  <TableCell align="right">
+                    <IconButton>
+                      <DeleteIcon color="error" />
+                    </IconButton>
+                  </TableCell>
+                </>
+              )}
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </TableContainer>
