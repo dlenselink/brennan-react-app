@@ -1,5 +1,4 @@
 import useSWR from 'swr';
-import Typography from '@mui/material/Typography';
 import { ErrorMessage, PageTitle, PageWrapper, VehicleTable } from 'components';
 import { fetcher } from 'utils';
 
