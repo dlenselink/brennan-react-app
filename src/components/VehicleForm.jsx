@@ -92,9 +92,11 @@ const VehicleForm = ({ onSave, defaults = defaultValues }) => {
           color="primary"
           sx={classes.button}
           onClick={(e) => {
-            e.preventDefault();
-            onSave({ year, make, model, color, vin });
-            clearForm();
+            if (year && make && model && color && vin) {
+              onSave({ year, make, model, color, vin });
+              clearForm();
+              e.preventDefault();
+            }
           }}
         >
           Save
