@@ -1,10 +1,14 @@
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import { PageWrapper, PageTitle, VehicleForm } from 'components';
+
+// replace this with DB post call
+const onSave = ({ year, make, model, color, vin }) =>
+  console.log({ year, make, model, color, vin });
 
 const AddVehiclesPage = () => (
-  <Box sx={{ display: 'flex', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Typography variant="h1">Add Vehicles Page</Typography>
-  </Box>
+  <PageWrapper>
+    <PageTitle title="Add Vehicles" />
+    <VehicleForm onSave={onSave} />
+  </PageWrapper>
 );
 
 export default AddVehiclesPage;

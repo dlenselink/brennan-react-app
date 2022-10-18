@@ -34,7 +34,13 @@ const classes = {
     display: 'flex',
     flexDirection: 'column',
   },
-  mainTitle: { marginRight: '64px', color: 'white', padding: '4px' },
+  mainTitle: {
+    marginRight: '64px',
+    color: 'white',
+    padding: '4px',
+    margin: '8px 64px 8px 8px',
+    lineHeight: '1em',
+  },
   navSection: {
     display: 'flex',
     alignItems: 'center',
@@ -42,7 +48,7 @@ const classes = {
   },
   topNav: {
     backgroundColor: 'black',
-    height: '72px',
+    height: '80px',
   },
   bottomNav: {
     backgroundColor: (theme) => theme.palette.grey[500],

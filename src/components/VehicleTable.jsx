@@ -13,22 +13,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-const createData = (name, calories, fat, carbs, protein) => ({
-  name,
-  calories,
-  fat,
-  carbs,
-  protein,
-});
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
 const VehicleTable = ({ type, rowData }) => (
   <Box sx={{ margin: '16px' }}>
     <TableContainer component={Paper}>
@@ -59,13 +43,13 @@ const VehicleTable = ({ type, rowData }) => (
               model,
               color,
               vin,
-              onEditClick,
-              onDeleteClick,
-              onFavoriteClick,
+              // onEditClick,
+              // onDeleteClick,
+              // onFavoriteClick,
             }) => (
               <TableRow key={id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell component="th" scope="row">
-                  <IconButton onClick={onFavoriteClick}>
+                  <IconButton>
                     {isFavorite ? <FavoriteIcon color="error" /> : <FavoriteBorderIcon />}
                   </IconButton>
                 </TableCell>
@@ -77,12 +61,12 @@ const VehicleTable = ({ type, rowData }) => (
                 {type === 'manage' && (
                   <>
                     <TableCell align="right">
-                      <IconButton onClick={onEditClick} sx={{ paddingRight: 0 }}>
+                      <IconButton sx={{ paddingRight: 0 }}>
                         <EditIcon />
                       </IconButton>
                     </TableCell>
                     <TableCell align="right">
-                      <IconButton onClick={onDeleteClick}>
+                      <IconButton>
                         <DeleteIcon color="error" />
                       </IconButton>
                     </TableCell>
