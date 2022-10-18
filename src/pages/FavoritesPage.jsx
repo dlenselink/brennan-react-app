@@ -3,7 +3,7 @@ import VehicleJson from 'data/vehicles.json'; // remove and replace VehicleJson 
 
 const FavoritesPage = () => (
   <PageWrapper>
-    <PageTitle title="Manage Vehicles" />
+    <PageTitle title="Favorite Vehicles" />
     <VehicleTable type="favorites" rowData={VehicleJson} />
   </PageWrapper>
 );

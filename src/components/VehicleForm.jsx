@@ -4,6 +4,14 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
+const defaultValues = {
+  year: '',
+  make: '',
+  model: '',
+  color: '',
+  vin: '',
+};
+
 const classes = {
   button: {
     padding: '8px 16px',
@@ -11,18 +19,17 @@ const classes = {
   },
 };
 
-const VehicleForm = ({ onSave }) => {
-  const [year, setYear] = useState('');
-  const [make, setMake] = useState('');
-  const [model, setModel] = useState('');
-  const [color, setColor] = useState('');
-  const [vin, setVin] = useState('');
+const VehicleForm = ({ onSave, defaults = defaultValues }) => {
+  const [year, setYear] = useState(defaults.year);
+  const [make, setMake] = useState(defaults.make);
+  const [model, setModel] = useState(defaults.model);
+  const [color, setColor] = useState(defaults.color);
+  const [vin, setVin] = useState(defaults.vin);
 
   return (
     <Box
       component="form"
-      // noValidate
-      // autoComplete="off"
+      autoComplete="off"
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -91,7 +98,7 @@ const VehicleForm = ({ onSave }) => {
             setVin('');
           }}
         >
-          Cancel
+          Clear
         </Button>
       </Box>
     </Box>
