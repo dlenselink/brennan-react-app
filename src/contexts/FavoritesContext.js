@@ -1,5 +1,10 @@
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useContext, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
+
+const getInitialState = () => {
+  const savedFavorites = localStorage.getItem('favoriteVehicles');
+  return savedFavorites ? JSON.parse(savedFavorites) : [];
+};
 
 const FavoritesContext = createContext();
 
@@ -19,7 +24,12 @@ const favoritesReducer = (state, { type, payload }) => {
 };
 
 const FavoritesProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(favoritesReducer, { favorites: [] });
+  const [state, dispatch] = useReducer(favoritesReducer, { favorites: getInitialState() });
+
+  useEffect(() => {
+    localStorage.setItem('favoriteVehicles', JSON.stringify(state.favorites));
+  }, [state.favorites]);
+
   const value = { state, dispatch };
   return <FavoritesContext.Provider value={value}>{children}</FavoritesContext.Provider>;
 };
