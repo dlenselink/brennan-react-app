@@ -1,4 +1,4 @@
-import { PageWrapper, PageTitle, VehicleForm } from 'components';
+import { PageTitle, PageWrapper, VehicleForm } from 'components';
 
 const onSave = ({ year, make, model, color, vin }) => {
   // replace this with DB post call

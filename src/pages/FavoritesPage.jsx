@@ -1,8 +1,8 @@
 // import useSWR from 'swr';
 // import { fetcher } from 'network';
 import { PageTitle, PageWrapper, VehicleTable } from 'components'; // ErrorMessage,
-import { useFavorites } from 'contexts/FavoritesContext';
-import flattenVehicleMakeData from 'data/flattenVehicleMakeData';
+import { useFavorites } from 'contexts';
+import { flattenVehicleMakeData } from 'data';
 import VehicleJson from 'data/vehicles.json'; // remove and replace VehicleJson with API call result
 
 const FavoritesPage = () => {

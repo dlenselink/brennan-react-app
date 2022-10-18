@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
+// import Modal from '@mui/material/Modal';
+import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-// import Modal from '@mui/material/Modal';
-import { useFavorites } from 'contexts/FavoritesContext';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useFavorites } from 'contexts';
 // import VehicleForm from './VehicleForm';
 
 const VehicleTable = ({ type, rowData }) => {

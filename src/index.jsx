@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { FavoritesProvider } from 'contexts/FavoritesContext';
-import router from './router';
-import theme from './theme';
+import { FavoritesProvider } from 'contexts';
+import router from 'router';
+import theme from 'theme';
 
 // Roboto font for MUI
 import '@fontsource/roboto/300.css';
