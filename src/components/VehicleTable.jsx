@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
-// import Modal from '@mui/material/Modal';
+import Modal from '@mui/material/Modal';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -13,17 +14,43 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { VehicleForm } from 'components';
 import { useFavorites } from 'contexts';
-// import VehicleForm from './VehicleForm';
+import { defaultVehicleValues } from 'data';
+
+const classes = {
+  root: { margin: '16px' },
+  modalWrapper: { display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center' },
+  table: { minWidth: 880, padding: '8px' },
+  tableRow: { '&:last-child td, &:last-child th': { border: 0 } },
+};
 
 const VehicleTable = ({ type, rowData }) => {
   const { state, dispatch } = useFavorites();
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editModalData, setEditModalData] = useState();
+
+  const handleEditClick = ({ year, make, model, color, vin }) => {
+    setEditModalData({ year, make, model, color, vin });
+    setIsEditModalOpen(true);
+  };
+
+  const onEditSave = () => {
+    // replace with db PUT call
+    console.log('Saving vehicle edit to db...');
+    setIsEditModalOpen(false);
+  };
+
+  const onEditCancel = () => {
+    setIsEditModalOpen(false);
+    setEditModalData(defaultVehicleValues);
+  };
 
   return (
     <>
-      <Box sx={{ margin: '16px' }}>
+      <Box sx={classes.root}>
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 880, padding: '8px' }}>
+          <Table sx={classes.table}>
             <TableHead>
               <TableRow>
                 <TableCell>Favorite</TableCell>
@@ -42,7 +69,7 @@ const VehicleTable = ({ type, rowData }) => {
             </TableHead>
             <TableBody>
               {rowData.map(({ id, year, make, model, color, vin }) => (
-                <TableRow key={id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableRow key={id} sx={classes.tableRow}>
                   <TableCell component="th" scope="row">
                     <IconButton onClick={() => dispatch({ type: 'toggle', payload: id })}>
                       {state.favorites.includes(id) ? (
@@ -60,7 +87,9 @@ const VehicleTable = ({ type, rowData }) => {
                   {type === 'manage' && (
                     <>
                       <TableCell align="right">
-                        <IconButton>
+                        <IconButton
+                          onClick={() => handleEditClick({ year, make, model, color, vin })}
+                        >
                           <EditIcon />
                         </IconButton>
                       </TableCell>
@@ -77,9 +106,11 @@ const VehicleTable = ({ type, rowData }) => {
           </Table>
         </TableContainer>
       </Box>
-      {/* <Modal>
-        <VehicleForm onSave={} defaults={} />
-      </Modal> */}
+      <Modal open={isEditModalOpen}>
+        <Box sx={classes.modalWrapper}>
+          <VehicleForm onSave={onEditSave} onCancel={onEditCancel} defaults={editModalData} />
+        </Box>
+      </Modal>
     </>
   );
 };

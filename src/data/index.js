@@ -1,3 +1,4 @@
+import defaultVehicleValues from './defaultVehicleValues';
 import flattenVehicleMakeData from './flattenVehicleMakeData';
 
-export { flattenVehicleMakeData };
+export { defaultVehicleValues, flattenVehicleMakeData };

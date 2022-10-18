@@ -10,6 +10,7 @@ const NavButton = ({ text, onClick, isHighlighted = false }) => (
       margin: '0 8px',
       padding: '8px 12px',
       color: (theme) => (isHighlighted ? theme.palette.primary.dark : 'white'),
+      // underline on hover
       '&:hover': {
         '&::after': {
           content: '""',

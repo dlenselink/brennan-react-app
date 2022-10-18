@@ -3,14 +3,7 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-
-const defaultValues = {
-  year: '',
-  make: '',
-  model: '',
-  color: '',
-  vin: '',
-};
+import { defaultVehicleValues } from 'data';
 
 const classes = {
   root: {
@@ -34,7 +27,7 @@ const classes = {
   },
 };
 
-const VehicleForm = ({ onSave, onCancel, defaults = defaultValues }) => {
+const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
   const [year, setYear] = useState(defaults.year);
   const [make, setMake] = useState(defaults.make);
   const [model, setModel] = useState(defaults.model);
@@ -42,7 +35,7 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultValues }) => {
   const [vin, setVin] = useState(defaults.vin);
 
   const clearForm = () => {
-    setYear('');
+    setYear(0);
     setMake('');
     setModel('');
     setColor('');
@@ -69,7 +62,7 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultValues }) => {
         id="year"
         label="Year"
         type="number"
-        InputProps={{ inputProps: { min: 1886, max: new Date().getFullYear() + 1 } }}
+        InputProps={{ inputProps: { min: 0 } }}
         value={year}
         onInput={(e) => setYear(e.target.value)}
       />
