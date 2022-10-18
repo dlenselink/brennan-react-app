@@ -10,6 +10,7 @@ const defaultValues = {
   model: '',
   color: '',
   vin: '',
+  price: '',
 };
 
 const classes = {
@@ -40,6 +41,7 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultValues }) => {
   const [model, setModel] = useState(defaults.model);
   const [color, setColor] = useState(defaults.color);
   const [vin, setVin] = useState(defaults.vin);
+  const [purchasePrice, setPurchasePrice] = useState(defaults.price);
 
   const clearForm = () => {
     setYear('');
@@ -47,11 +49,12 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultValues }) => {
     setModel('');
     setColor('');
     setVin('');
+    setPurchasePrice('');
   };
 
   const handleSaveClick = (e) => {
-    if (year && make && model && color && vin) {
-      onSave({ year, make, model, color, vin });
+    if (year && make && model && color && vin && purchasePrice) {
+      onSave({ year, make, model, color, vin, purchasePrice });
       clearForm();
       e.preventDefault();
     }
@@ -99,6 +102,13 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultValues }) => {
         value={vin}
         onInput={(e) => setVin(e.target.value)}
       />
+      <TextField
+        required
+        id="purchasePrice"
+        label="Purchase Price"
+        value={purchasePrice}
+        onInput={(e) => setPurchasePrice(e.target.value)}
+      />
       <Box sx={classes.buttonWrapper}>
         <Button type="submit" color="primary" sx={classes.button} onClick={handleSaveClick}>
           Save
@@ -120,6 +130,7 @@ VehicleForm.propTypes = {
     model: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
     vin: PropTypes.string.isRequired,
+    setPurchasePrice: PropTypes.string.isRequired,
   }),
 };
 
