@@ -1,9 +1,8 @@
-import { PageWrapper } from './MuiStyled';
-import Typography from '@mui/material/Typography';
+import { PageWrapper, PageTitle } from './MuiStyled';
 
 const ErrorMessage = () => (
   <PageWrapper>
-    <Typography variant="h4">An error occurred while fetching data.</Typography>
+    <PageTitle title="An error occurred while fetching data" />
   </PageWrapper>
 );
 

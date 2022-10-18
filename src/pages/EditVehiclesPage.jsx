@@ -5,7 +5,7 @@ import { fetcher } from 'utils';
 const EditVehiclesPage = () => {
   const { data, error } = useSWR('/localhost:8080/make', fetcher);
 
-  if (error) return <ErrorMessage />;
+  if (error || !data) return <ErrorMessage />;
 
   return (
     <PageWrapper>
