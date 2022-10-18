@@ -2,8 +2,7 @@
 // import { fetcher } from 'network';
 import { PageTitle, PageWrapper, VehicleTable } from 'components'; // ErrorMessage,
 import { useFavorites } from 'contexts';
-import { flattenVehicleMakeData } from 'data';
-import VehicleJson from 'data/vehicles.json'; // remove and replace VehicleJson with API call result
+import { flattenVehicleMakeData, VehicleJson } from 'data';
 
 const FavoritesPage = () => {
   // const { data, error } = useSWR('/localhost:8080/make', fetcher);
