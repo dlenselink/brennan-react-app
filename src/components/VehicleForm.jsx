@@ -34,7 +34,7 @@ const classes = {
   },
 };
 
-const VehicleForm = ({ onSave, defaults = defaultValues }) => {
+const VehicleForm = ({ onSave, onCancel, defaults = defaultValues }) => {
   const [year, setYear] = useState(defaults.year);
   const [make, setMake] = useState(defaults.make);
   const [model, setModel] = useState(defaults.model);
@@ -47,6 +47,19 @@ const VehicleForm = ({ onSave, defaults = defaultValues }) => {
     setModel('');
     setColor('');
     setVin('');
+  };
+
+  const handleSaveClick = (e) => {
+    if (year && make && model && color && vin) {
+      onSave({ year, make, model, color, vin });
+      clearForm();
+      e.preventDefault();
+    }
+  };
+
+  const handleCancelClick = () => {
+    clearForm();
+    if (onCancel) onCancel();
   };
 
   return (
@@ -87,21 +100,10 @@ const VehicleForm = ({ onSave, defaults = defaultValues }) => {
         onInput={(e) => setVin(e.target.value)}
       />
       <Box sx={classes.buttonWrapper}>
-        <Button
-          type="submit"
-          color="primary"
-          sx={classes.button}
-          onClick={(e) => {
-            if (year && make && model && color && vin) {
-              onSave({ year, make, model, color, vin });
-              clearForm();
-              e.preventDefault();
-            }
-          }}
-        >
+        <Button type="submit" color="primary" sx={classes.button} onClick={handleSaveClick}>
           Save
         </Button>
-        <Button type="button" color="error" sx={classes.button} onClick={() => clearForm()}>
+        <Button type="button" color="error" sx={classes.button} onClick={handleCancelClick}>
           Cancel
         </Button>
       </Box>
@@ -111,6 +113,7 @@ const VehicleForm = ({ onSave, defaults = defaultValues }) => {
 
 VehicleForm.propTypes = {
   onSave: PropTypes.func.isRequired,
+  onCancel: PropTypes.func,
   defaults: PropTypes.shape({
     year: PropTypes.string.isRequired,
     make: PropTypes.string.isRequired,
