@@ -75,11 +75,11 @@ const Navigation = () => {
           <NavButton
             key={text}
             text={text}
+            onClick={() => navigate(link)}
             isHighlighted={
               (link === '/' && location.pathname === '/') ||
               (link !== '/' && location.pathname.includes(link))
             }
-            onClick={() => navigate(link)}
           />
         ))}
       </Box>
@@ -94,8 +94,8 @@ const Navigation = () => {
             <NavButton
               key={text}
               text={text}
-              isHighlighted={location.pathname === link}
               onClick={() => navigate(link)}
+              isHighlighted={location.pathname === link}
             />
           ))}
         </Box>

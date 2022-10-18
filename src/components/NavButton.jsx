@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 
-const NavButton = ({ text, isHighlighted, onClick }) => (
+const NavButton = ({ text, onClick, isHighlighted = false }) => (
   <Button
     key={text}
     variant="text"
@@ -26,5 +27,15 @@ const NavButton = ({ text, isHighlighted, onClick }) => (
     {text}
   </Button>
 );
+
+NavButton.propTypes = {
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  isHighlighted: PropTypes.bool,
+};
+
+NavButton.defaultProps = {
+  isHighlighted: false,
+};
 
 export default NavButton;

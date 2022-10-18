@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { styled } from '@mui/system';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -14,6 +15,7 @@ const PageTitle = ({ title }) => (
     sx={{
       display: 'flex',
       padding: '24px',
+      margin: '24px auto',
     }}
   >
     <Typography variant="h1" fontSize="24px">
@@ -21,5 +23,9 @@ const PageTitle = ({ title }) => (
     </Typography>
   </Box>
 );
+
+PageTitle.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export { PageWrapper, PageTitle };

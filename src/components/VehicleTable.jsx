@@ -70,7 +70,17 @@ const VehicleTable = ({ type, rowData }) => (
 
 VehicleTable.propTypes = {
   type: PropTypes.oneOf(['manage', 'favorites']).isRequired,
-  rowData: PropTypes.array.isRequired,
+  rowData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      isFavorite: PropTypes.bool.isRequired,
+      year: PropTypes.string.isRequired,
+      make: PropTypes.string.isRequired,
+      model: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired,
+      vin: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default VehicleTable;

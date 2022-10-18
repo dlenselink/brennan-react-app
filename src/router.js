@@ -1,6 +1,6 @@
 import { createBrowserRouter, Outlet, Navigate } from 'react-router-dom';
-import { Layout } from 'components';
 import { AddVehiclesPage, EditVehiclesPage, HomePage, FavoritesPage } from 'pages';
+import { Layout } from 'components';
 
 const router = createBrowserRouter([
   {
