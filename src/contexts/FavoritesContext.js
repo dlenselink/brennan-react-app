@@ -6,10 +6,13 @@ const FavoritesContext = createContext();
 const favoritesReducer = (state, { type, payload }) => {
   // payload is a number which corresponds to the id of the resource
   switch (type) {
-    case 'add':
-      return { ...state, favorites: [...state.favorites, payload] };
-    case 'remove':
-      return { ...state, favorites: [...state.favorites].filter((id) => id !== payload) };
+    case 'toggle':
+      return {
+        ...state,
+        favorites: state.favorites.includes(payload)
+          ? [...state.favorites].filter((id) => id !== payload)
+          : [...state.favorites, payload],
+      };
     default:
       throw new Error(`Unhandled action type: ${type}`);
   }
