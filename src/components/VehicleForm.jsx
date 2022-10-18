@@ -10,7 +10,6 @@ const defaultValues = {
   model: '',
   color: '',
   vin: '',
-  price: '',
 };
 
 const classes = {
@@ -41,7 +40,6 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultValues }) => {
   const [model, setModel] = useState(defaults.model);
   const [color, setColor] = useState(defaults.color);
   const [vin, setVin] = useState(defaults.vin);
-  const [purchasePrice, setPurchasePrice] = useState(defaults.price);
 
   const clearForm = () => {
     setYear('');
@@ -49,12 +47,11 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultValues }) => {
     setModel('');
     setColor('');
     setVin('');
-    setPurchasePrice('');
   };
 
   const handleSaveClick = (e) => {
-    if (year && make && model && color && vin && purchasePrice) {
-      onSave({ year, make, model, color, vin, purchasePrice });
+    if (year && make && model && color && vin) {
+      onSave({ year, make, model, color, vin });
       clearForm();
       e.preventDefault();
     }
@@ -71,6 +68,8 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultValues }) => {
         required
         id="year"
         label="Year"
+        type="number"
+        InputProps={{ inputProps: { min: 1886, max: new Date().getFullYear() + 1 } }}
         value={year}
         onInput={(e) => setYear(e.target.value)}
       />
@@ -102,13 +101,6 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultValues }) => {
         value={vin}
         onInput={(e) => setVin(e.target.value)}
       />
-      <TextField
-        required
-        id="purchasePrice"
-        label="Purchase Price"
-        value={purchasePrice}
-        onInput={(e) => setPurchasePrice(e.target.value)}
-      />
       <Box sx={classes.buttonWrapper}>
         <Button type="submit" color="primary" sx={classes.button} onClick={handleSaveClick}>
           Save
@@ -125,12 +117,11 @@ VehicleForm.propTypes = {
   onSave: PropTypes.func.isRequired,
   onCancel: PropTypes.func,
   defaults: PropTypes.shape({
-    year: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
     make: PropTypes.string.isRequired,
     model: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
     vin: PropTypes.string.isRequired,
-    setPurchasePrice: PropTypes.string.isRequired,
   }),
 };
 

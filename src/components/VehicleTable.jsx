@@ -89,7 +89,7 @@ VehicleTable.propTypes = {
   rowData: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      year: PropTypes.string.isRequired,
+      year: PropTypes.number.isRequired,
       make: PropTypes.string.isRequired,
       model: PropTypes.string.isRequired,
       color: PropTypes.string.isRequired,
