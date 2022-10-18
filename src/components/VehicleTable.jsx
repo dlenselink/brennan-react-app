@@ -57,7 +57,7 @@ const VehicleTable = ({ type, rowData }) => {
                 {type === 'manage' && (
                   <>
                     <TableCell align="right">
-                      <IconButton sx={{ paddingRight: 0 }}>
+                      <IconButton>
                         <EditIcon />
                       </IconButton>
                     </TableCell>
