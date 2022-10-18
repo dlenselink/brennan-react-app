@@ -1,11 +1,19 @@
-import { PageTitle, PageWrapper, VehicleTable } from 'components';
-import VehicleJson from 'data/vehicles.json'; // remove and replace VehicleJson with API call result
+import useSWR from 'swr';
+import Typography from '@mui/material/Typography';
+import { ErrorMessage, PageTitle, PageWrapper, VehicleTable } from 'components';
+import { fetcher } from 'utils';
 
-const EditVehiclesPage = () => (
-  <PageWrapper>
-    <PageTitle title="Manage Vehicles" />
-    <VehicleTable type="manage" rowData={VehicleJson} />
-  </PageWrapper>
-);
+const EditVehiclesPage = () => {
+  const { data, error } = useSWR('/localhost:8080/make', fetcher);
+
+  if (error) return <ErrorMessage />;
+
+  return (
+    <PageWrapper>
+      <PageTitle title="Manage Vehicles" />
+      <VehicleTable type="manage" rowData={data} />
+    </PageWrapper>
+  );
+};
 
 export default EditVehiclesPage;
