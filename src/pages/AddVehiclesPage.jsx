@@ -1,8 +1,17 @@
 import { PageTitle, PageWrapper, VehicleForm } from 'components';
 
-const onSave = ({ year, make, model, color, vin }) => {
+const onSave = ({ year, make, model, color, licensePlate, vin }) => {
   // replace this with DB post call
-  console.log({ year, make, model, color, vin });
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+
+        }
+    }
+  console.log({ year, make, model, color,licensePlate, vin });
 };
 
 const AddVehiclesPage = () => (

@@ -3,6 +3,7 @@ const defaultVehicleValues = {
   make: '',
   model: '',
   color: '',
+  licensePlate: '',
   vin: '',
 };
 

@@ -32,19 +32,22 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
   const [make, setMake] = useState(defaults.make);
   const [model, setModel] = useState(defaults.model);
   const [color, setColor] = useState(defaults.color);
+  const [licensePlate, setLicensePlate] = useState(defaults.licensePlate);
   const [vin, setVin] = useState(defaults.vin);
+
 
   const clearForm = () => {
     setYear(0);
     setMake('');
     setModel('');
     setColor('');
+    setLicensePlate('');
     setVin('');
   };
 
   const handleSaveClick = (e) => {
-    if (year && make && model && color && vin) {
-      onSave({ year, make, model, color, vin });
+    if (year && make && model && color && licensePlate && vin) {
+      onSave({ year, make, model, color, licensePlate, vin });
       clearForm();
       e.preventDefault();
     }
@@ -88,6 +91,13 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
         onInput={(e) => setColor(e.target.value)}
       />
       <TextField
+          required
+          id="licensePlate"
+          label="LicensePlate"
+          value={licensePlate}
+          onInput={(e) => setLicensePlate(e.target.value)}
+      />
+      <TextField
         required
         id="vin"
         label="VIN"
@@ -114,6 +124,7 @@ VehicleForm.propTypes = {
     make: PropTypes.string.isRequired,
     model: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
+    licensePlate: PropTypes.string.isRequired,
     vin: PropTypes.string.isRequired,
   }),
 };

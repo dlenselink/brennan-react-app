@@ -30,8 +30,8 @@ const VehicleTable = ({ type, rowData }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editModalData, setEditModalData] = useState();
 
-  const handleEditClick = ({ year, make, model, color, vin }) => {
-    setEditModalData({ year, make, model, color, vin });
+  const handleEditClick = ({ year, make, model, color,licensePlate, vin }) => {
+    setEditModalData({ year, make, model, color, licensePlate, vin });
     setIsEditModalOpen(true);
   };
 
@@ -58,6 +58,7 @@ const VehicleTable = ({ type, rowData }) => {
                 <TableCell align="right">Make</TableCell>
                 <TableCell align="right">Model</TableCell>
                 <TableCell align="right">Color</TableCell>
+                <TableCell align="right">License Plate</TableCell>
                 <TableCell align="right">VIN</TableCell>
                 {type === 'manage' && (
                   <>
@@ -68,7 +69,7 @@ const VehicleTable = ({ type, rowData }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rowData.map(({ id, year, make, model, color, vin }) => (
+              {rowData.map(({ id, year, make, model, color, licensePlate, vin }) => (
                 <TableRow key={id} sx={classes.tableRow}>
                   <TableCell component="th" scope="row">
                     <IconButton onClick={() => dispatch({ type: 'toggle', payload: id })}>
@@ -83,6 +84,7 @@ const VehicleTable = ({ type, rowData }) => {
                   <TableCell align="right">{make}</TableCell>
                   <TableCell align="right">{model}</TableCell>
                   <TableCell align="right">{color}</TableCell>
+                  <TableCell align="right">{licensePlate}</TableCell>
                   <TableCell align="right">{vin}</TableCell>
                   {type === 'manage' && (
                     <>
@@ -124,6 +126,7 @@ VehicleTable.propTypes = {
       make: PropTypes.string.isRequired,
       model: PropTypes.string.isRequired,
       color: PropTypes.string.isRequired,
+      licensePlate: PropTypes.string.isRequired,
       vin: PropTypes.string.isRequired,
     })
   ),
