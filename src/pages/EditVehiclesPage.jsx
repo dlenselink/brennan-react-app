@@ -11,7 +11,7 @@ const EditVehiclesPage = () => {
     const [vehicleData, setVehicleData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/make',
+        fetch('http://localhost:8080/make/',
             {headers: defaultHeaders(),})
             .then((res) => res.json())
             .then((json) => {
