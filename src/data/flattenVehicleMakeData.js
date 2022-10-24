@@ -1,6 +1,6 @@
 const flattenVehicleMakeData = (data) =>
-  data.map(({ makeName, vehicleModelList }) => ({
-    make: makeName,
+  data.map(({ vehicleMakeName, vehicleModelList }) => ({
+    make: vehicleMakeName,
     ...vehicleModelList.reduce(
       (accumModel, { vehicleModelName, vehicleList }) => ({
         ...accumModel,
