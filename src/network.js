@@ -19,11 +19,11 @@ const handleAxiosError = (err) => {
   return err;
 };
 
-const options = { headers: { Authorization: `Bearer ${process.env.REACT_APP_AUTH_TOKEN}` } };
+
 
 const fetcher = (url) =>
   axios
-    .get(url, options)
+    .get(url)
     .then((res) => res.data)
     .catch((err) => handleAxiosError(err));
 

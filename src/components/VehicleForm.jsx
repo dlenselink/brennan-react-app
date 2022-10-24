@@ -29,15 +29,15 @@ const classes = {
 
 const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
   const [year, setYear] = useState(defaults.year);
-  const [make, setMake] = useState(defaults.make);
-  const [model, setModel] = useState(defaults.model);
+  const [make, setMake] = useState(defaults.vehicleMake);
+  const [model, setModel] = useState(defaults.vehicleModel);
   const [color, setColor] = useState(defaults.color);
   const [licensePlate, setLicensePlate] = useState(defaults.licensePlate);
   const [vin, setVin] = useState(defaults.vin);
 
 
   const clearForm = () => {
-    setYear(0);
+    setYear('');
     setMake('');
     setModel('');
     setColor('');
@@ -120,9 +120,9 @@ VehicleForm.propTypes = {
   onSave: PropTypes.func.isRequired,
   onCancel: PropTypes.func,
   defaults: PropTypes.shape({
-    year: PropTypes.number.isRequired,
     make: PropTypes.string.isRequired,
     model: PropTypes.string.isRequired,
+    year: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
     licensePlate: PropTypes.string.isRequired,
     vin: PropTypes.string.isRequired,
