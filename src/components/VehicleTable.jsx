@@ -37,7 +37,7 @@ const VehicleTable = ({ type, rowData }) => {
   };
 
   const onEditSave = ({ color, licensePlate }) => {
-    fetch('http://localhost:8080/vehicle/dto/', {
+    fetch('http://localhost:8080/vehicle/', {
       method: 'PATCH',
       body: JSON.stringify({ color, licensePlate }),
       headers: defaultHeaders(),
