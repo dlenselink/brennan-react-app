@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
@@ -36,23 +37,42 @@ const VehicleTable = ({ type, rowData }) => {
     setIsEditModalOpen(true);
   };
 
-  const onEditSave = ({ color, licensePlate }) => {
-    fetch('http://localhost:8080/vehicle/', {
-      method: 'PATCH',
-      body: JSON.stringify({ color, licensePlate }),
+  const onEditSave = ({ id, year, make, model, color, licensePlate, vin }) => {
+    const data = { id, year, make, model, color, licensePlate, vin };
+    const config = {
       headers: defaultHeaders(),
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        console.log('Saved vehicle edit to db! response json below:');
-        console.log(json);
+    };
+
+    axios
+      .put('http://localhost:8080/vehicle/dto/', data, config)
+      .then((res) => {
+        console.log('PUT SUCCESS');
+        console.log(res);
       })
       .catch((err) => {
+        console.log('PUT FAILURE');
         console.error(err);
       })
       .finally(() => {
         setIsEditModalOpen(false);
       });
+
+    // fetch('http://localhost:8080/vehicle/', {
+    //   method: 'PATCH',
+    //   body: JSON.stringify({ color, licensePlate }),
+    //   headers: defaultHeaders(),
+    // })
+    //   .then((res) => res.json())
+    //   .then((json) => {
+    //     console.log('Saved vehicle edit to db! response json below:');
+    //     console.log(json);
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   })
+    //   .finally(() => {
+    //     setIsEditModalOpen(false);
+    //   });
   };
 
   const onEditCancel = () => {

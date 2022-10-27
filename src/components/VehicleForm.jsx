@@ -28,6 +28,7 @@ const classes = {
 };
 
 const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
+  const [id, setId] = useState(defaults.id);
   const [year, setYear] = useState(defaults.year);
   const [make, setMake] = useState(defaults.vehicleMake);
   const [model, setModel] = useState(defaults.vehicleModel);
@@ -36,6 +37,7 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
   const [vin, setVin] = useState(defaults.vin);
 
   const clearForm = () => {
+    setId('');
     setYear('');
     setMake('');
     setModel('');
@@ -45,8 +47,8 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
   };
 
   const handleSaveClick = (e) => {
-    if (year && make && model && color && licensePlate && vin) {
-      onSave({ color, licensePlate });
+    if (id && year && make && model && color && licensePlate && vin) {
+      onSave({ id, year, make, model, color, licensePlate, vin });
       clearForm();
       e.preventDefault();
     }

@@ -6,12 +6,12 @@ const flattenVehicleMakeData = (data) =>
         ...accumModel,
         model: vehicleModelName,
         ...vehicleList.reduce(
-          (accumVehicle, { id, year, vin,licensePlate, color }) => ({
+          (accumVehicle, { id, year, vin, licensePlate, color }) => ({
             ...accumVehicle,
             id,
             year,
             vin,
-              licensePlate,
+            licensePlate,
             color,
           }),
           {}
