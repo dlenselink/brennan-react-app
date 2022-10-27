@@ -1,15 +1,12 @@
 import { PageTitle, PageWrapper, VehicleForm } from 'components';
-import {defaultHeaders} from "../utils";
+import { defaultHeaders } from '../utils';
 
 const onSave = ({ year, make, model, color, licensePlate, vin }) => {
-    fetch('http://localhost:8080/vehicle/dto/', {
-        method: 'POST',
-        body: JSON.stringify({ year, make, model, color, licensePlate, vin }),
-   headers: defaultHeaders(),
-
-    }).then(r => console.log(r));
-
-  console.log({  make, model, year, color, licensePlate, vin });
+  fetch('http://localhost:8080/vehicle/dto/', {
+    method: 'POST',
+    body: JSON.stringify({ year, make, model, color, licensePlate, vin }),
+    headers: defaultHeaders(),
+  }).then((r) => console.log(r));
 };
 
 const AddVehiclesPage = () => (

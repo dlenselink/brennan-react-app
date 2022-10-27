@@ -30,8 +30,8 @@ const classes = {
 const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
   const [id, setId] = useState(defaults.id);
   const [year, setYear] = useState(defaults.year);
-  const [make, setMake] = useState(defaults.vehicleMake);
-  const [model, setModel] = useState(defaults.vehicleModel);
+  const [makeName, setMakeName] = useState(defaults.makeName);
+  const [vehicleModelName, setVehicleModelName] = useState(defaults.vehicleModelName);
   const [color, setColor] = useState(defaults.color);
   const [licensePlate, setLicensePlate] = useState(defaults.licensePlate);
   const [vin, setVin] = useState(defaults.vin);
@@ -39,18 +39,19 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
   const clearForm = () => {
     setId(defaults.id);
     setYear(defaults.year);
-    setMake(defaults.vehicleMake);
-    setModel(defaults.vehicleModel);
+    setMakeName(defaults.makeName);
+    setVehicleModelName(defaults.vehicleModelName);
     setColor(defaults.color);
     setLicensePlate(defaults.licensePlate);
     setVin(defaults.vin);
   };
 
   const handleSaveClick = (e) => {
-    if (id && year && make && model && color && licensePlate && vin) {
-      onSave({ id, year, make, model, color, licensePlate, vin });
+    e.preventDefault();
+
+    if (id && year && makeName && vehicleModelName && color && licensePlate && vin) {
+      onSave({ id, year, makeName, vehicleModelName, color, licensePlate, vin });
       clearForm();
-      e.preventDefault();
     }
   };
 
@@ -72,15 +73,15 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
         required
         id="make"
         label="Make"
-        value={make}
-        onInput={(e) => setMake(e.target.value)}
+        value={makeName}
+        onInput={(e) => setMakeName(e.target.value)}
       />
       <TextField
         required
         id="model"
         label="Model"
-        value={model}
-        onInput={(e) => setModel(e.target.value)}
+        value={vehicleModelName}
+        onInput={(e) => setVehicleModelName(e.target.value)}
       />
       <TextField
         required
@@ -119,8 +120,8 @@ VehicleForm.propTypes = {
   onSave: PropTypes.func.isRequired,
   onCancel: PropTypes.func,
   defaults: PropTypes.shape({
-    make: PropTypes.string.isRequired,
-    model: PropTypes.string.isRequired,
+    makeName: PropTypes.string.isRequired,
+    vehicleModelName: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
     licensePlate: PropTypes.string.isRequired,

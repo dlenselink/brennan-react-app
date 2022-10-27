@@ -32,47 +32,26 @@ const VehicleTable = ({ type, rowData }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editModalData, setEditModalData] = useState();
 
-  const handleEditClick = ({ year, make, model, color, licensePlate, vin }) => {
-    setEditModalData({ year, make, model, color, licensePlate, vin });
+  const handleEditClick = (data) => {
+    setEditModalData(data);
     setIsEditModalOpen(true);
   };
 
-  const onEditSave = ({ id, year, make, model, color, licensePlate, vin }) => {
-    const data = { id, year, make, model, color, licensePlate, vin };
-    const config = {
-      headers: defaultHeaders(),
-    };
+  const onEditSave = ({ id, year, makeName, vehicleModelName, color, licensePlate, vin }) => {
+    const data = { id, year, makeName, vehicleModelName, color, licensePlate, vin };
+    const config = { headers: defaultHeaders() };
 
     axios
       .put('http://localhost:8080/vehicle/dto/', data, config)
       .then((res) => {
-        console.log('PUT SUCCESS');
         console.log(res);
       })
       .catch((err) => {
-        console.log('PUT FAILURE');
         console.error(err);
       })
       .finally(() => {
         setIsEditModalOpen(false);
       });
-
-    // fetch('http://localhost:8080/vehicle/', {
-    //   method: 'PATCH',
-    //   body: JSON.stringify({ color, licensePlate }),
-    //   headers: defaultHeaders(),
-    // })
-    //   .then((res) => res.json())
-    //   .then((json) => {
-    //     console.log('Saved vehicle edit to db! response json below:');
-    //     console.log(json);
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   })
-    //   .finally(() => {
-    //     setIsEditModalOpen(false);
-    //   });
   };
 
   const onEditCancel = () => {
@@ -103,7 +82,7 @@ const VehicleTable = ({ type, rowData }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rowData.map(({ id, year, make, model, color, licensePlate, vin }) => (
+              {rowData.map(({ id, year, makeName, vehicleModelName, color, licensePlate, vin }) => (
                 <TableRow key={id} sx={classes.tableRow}>
                   <TableCell component="th" scope="row">
                     <IconButton onClick={() => dispatch({ type: 'toggle', payload: id })}>
@@ -115,8 +94,8 @@ const VehicleTable = ({ type, rowData }) => {
                     </IconButton>
                   </TableCell>
                   <TableCell align="right">{year}</TableCell>
-                  <TableCell align="right">{make}</TableCell>
-                  <TableCell align="right">{model}</TableCell>
+                  <TableCell align="right">{makeName}</TableCell>
+                  <TableCell align="right">{vehicleModelName}</TableCell>
                   <TableCell align="right">{color}</TableCell>
                   <TableCell align="right">{licensePlate}</TableCell>
                   <TableCell align="right">{vin}</TableCell>
@@ -124,7 +103,17 @@ const VehicleTable = ({ type, rowData }) => {
                     <>
                       <TableCell align="right">
                         <IconButton
-                          onClick={() => handleEditClick({ year, make, model, color, vin })}
+                          onClick={() =>
+                            handleEditClick({
+                              id,
+                              year,
+                              makeName,
+                              vehicleModelName,
+                              color,
+                              licensePlate,
+                              vin,
+                            })
+                          }
                         >
                           <EditIcon />
                         </IconButton>
@@ -157,8 +146,8 @@ VehicleTable.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       year: PropTypes.string.isRequired,
-      make: PropTypes.string.isRequired,
-      model: PropTypes.string.isRequired,
+      makeName: PropTypes.string.isRequired,
+      vehicleModelName: PropTypes.string.isRequired,
       color: PropTypes.string.isRequired,
       licensePlate: PropTypes.string.isRequired,
       vin: PropTypes.string.isRequired,

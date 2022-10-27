@@ -1,10 +1,10 @@
 const flattenVehicleMakeData = (data) =>
-  data.map(({ vehicleMakeName, vehicleModelList }) => ({
-    make: vehicleMakeName,
+  data.map(({ makeName, vehicleModelList }) => ({
+    makeName,
     ...vehicleModelList.reduce(
       (accumModel, { vehicleModelName, vehicleList }) => ({
         ...accumModel,
-        model: vehicleModelName,
+        vehicleModelName,
         ...vehicleList.reduce(
           (accumVehicle, { id, year, vin, licensePlate, color }) => ({
             ...accumVehicle,

@@ -9,7 +9,7 @@
         "vehicleList": [
           {
             "id": 1,
-            "year": 2000,
+            "year": "2000",
             "licensePlate": "ZIT-554",
             "vin": "44977865444",
             "color": "Gray",
@@ -29,7 +29,7 @@
         "vehicleList": [
           {
             "id": 2,
-            "year": 2010,
+            "year": "2010",
             "licensePlate": "TUB-812",
             "vin": "444555667",
             "color": "Blue",
@@ -49,7 +49,7 @@
         "vehicleList": [
           {
             "id": 3,
-            "year": 2015,
+            "year": "2015",
             "licensePlate": "PAF-892",
             "vin": "555343434",
             "color": "Black",
