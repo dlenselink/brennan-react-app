@@ -46,7 +46,7 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
     setVin(defaults.vin);
   };
 
-  const handleSaveClick = (e) => {
+  const handleSaveClick = () => {
     if (id && year && makeName && vehicleModelName && color && licensePlate && vin) {
       onSave({ id, year, makeName, vehicleModelName, color, licensePlate, vin });
       clearForm();
