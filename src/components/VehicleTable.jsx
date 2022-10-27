@@ -44,14 +44,15 @@ const VehicleTable = ({ type, rowData }) => {
     })
       .then((res) => res.json())
       .then((json) => {
+        console.log('Saved vehicle edit to db! response json below:');
         console.log(json);
       })
       .catch((err) => {
         console.error(err);
+      })
+      .finally(() => {
+        setIsEditModalOpen(false);
       });
-
-    console.log('Saving vehicle edit to db...');
-    setIsEditModalOpen(false);
   };
 
   const onEditCancel = () => {
