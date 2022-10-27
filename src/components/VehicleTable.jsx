@@ -45,6 +45,9 @@ const VehicleTable = ({ type, rowData }) => {
       .then((res) => res.json())
       .then((json) => {
         console.log(json);
+      })
+      .catch((err) => {
+        console.error(err);
       });
 
     console.log('Saving vehicle edit to db...');
