@@ -47,8 +47,6 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
   };
 
   const handleSaveClick = (e) => {
-    e.preventDefault();
-
     if (id && year && makeName && vehicleModelName && color && licensePlate && vin) {
       onSave({ id, year, makeName, vehicleModelName, color, licensePlate, vin });
       clearForm();
@@ -105,7 +103,7 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
         onInput={(e) => setVin(e.target.value)}
       />
       <Box sx={classes.buttonWrapper}>
-        <Button type="submit" color="primary" sx={classes.button} onClick={handleSaveClick}>
+        <Button type="button" color="primary" sx={classes.button} onClick={handleSaveClick}>
           Save
         </Button>
         <Button type="button" color="error" sx={classes.button} onClick={handleCancelClick}>
