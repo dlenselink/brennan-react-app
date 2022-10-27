@@ -37,13 +37,13 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
   const [vin, setVin] = useState(defaults.vin);
 
   const clearForm = () => {
-    setId('');
-    setYear('');
-    setMake('');
-    setModel('');
-    setColor('');
-    setLicensePlate('');
-    setVin('');
+    setId(defaults.id);
+    setYear(defaults.year);
+    setMake(defaults.vehicleMake);
+    setModel(defaults.vehicleModel);
+    setColor(defaults.color);
+    setLicensePlate(defaults.licensePlate);
+    setVin(defaults.vin);
   };
 
   const handleSaveClick = (e) => {
@@ -65,8 +65,6 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
         required
         id="year"
         label="Year"
-        type="number"
-        InputProps={{ inputProps: { min: 0 } }}
         value={year}
         onInput={(e) => setYear(e.target.value)}
       />
