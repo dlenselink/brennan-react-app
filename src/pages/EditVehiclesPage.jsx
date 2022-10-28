@@ -15,6 +15,7 @@ const EditVehiclesPage = () => {
   }, []);
 
   const rowData = flattenVehicleMakeData(vehicleData);
+  console.log(rowData);
 
   return (
     <PageWrapper>

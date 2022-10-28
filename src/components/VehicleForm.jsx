@@ -69,14 +69,14 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
       />
       <TextField
         required
-        id="make"
+        id="makeName"
         label="Make"
         value={makeName}
         onInput={(e) => setMakeName(e.target.value)}
       />
       <TextField
         required
-        id="model"
+        id="vehicleModelName"
         label="Model"
         value={vehicleModelName}
         onInput={(e) => setVehicleModelName(e.target.value)}
@@ -126,6 +126,7 @@ VehicleForm.propTypes = {
   onSave: PropTypes.func.isRequired,
   onCancel: PropTypes.func,
   defaults: PropTypes.shape({
+    // id: PropTypes.number.isRequired,
     makeName: PropTypes.string.isRequired,
     vehicleModelName: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
