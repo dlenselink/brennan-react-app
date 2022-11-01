@@ -11,6 +11,7 @@ const EditVehiclesPage = () => {
       .then((res) => res.json())
       .then((json) => {
         setVehicleData(json);
+        console.log(vehicleData);
       });
   }, []);
 

@@ -1,5 +1,5 @@
 const defaultVehicleValues = {
-  id: 0,
+  id: -1,
   year: '',
   makeName: '',
   vehicleModelName: '',

@@ -37,6 +37,22 @@ const VehicleTable = ({ type, rowData }) => {
     setIsEditModalOpen(true);
   };
 
+
+
+  // const deleteHandler = ({ id, year, makeName, vehicleModelName, color, licensePlate, vin }) => {
+  //   const data = { id, year, makeName, vehicleModelName, color, licensePlate, vin };
+  //   const config = { headers: defaultHeaders() };
+
+  //   axios.delete('http://localhost:8080/vehicle/dto/', data, config)
+  //   .then((res) => {
+  //     console.log(res);
+  //   })
+  //   .catch((err) => {
+  //     console.error(err);
+  //   });
+   
+  // };
+
   const onEditSave = ({ id, year, makeName, vehicleModelName, color, licensePlate, vin }) => {
     const data = { id, year, makeName, vehicleModelName, color, licensePlate, vin };
     const config = { headers: defaultHeaders() };
@@ -82,7 +98,7 @@ const VehicleTable = ({ type, rowData }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rowData.map(({ id, year, makeName, vehicleModelName, color, licensePlate, vin }) => (
+              {rowData.map(({ id, year, vehicleMakeName, vehicleModelName, color, licensePlate, vin }) => (
                 <TableRow key={id} sx={classes.tableRow}>
                   <TableCell component="th" scope="row">
                     <IconButton onClick={() => dispatch({ type: 'toggle', payload: id })}>
@@ -94,7 +110,7 @@ const VehicleTable = ({ type, rowData }) => {
                     </IconButton>
                   </TableCell>
                   <TableCell align="right">{year}</TableCell>
-                  <TableCell align="right">{makeName}</TableCell>
+                  <TableCell align="right">{vehicleMakeName}</TableCell>
                   <TableCell align="right">{vehicleModelName}</TableCell>
                   <TableCell align="right">{color}</TableCell>
                   <TableCell align="right">{licensePlate}</TableCell>
@@ -107,7 +123,7 @@ const VehicleTable = ({ type, rowData }) => {
                             handleEditClick({
                               id,
                               year,
-                              makeName,
+                              vehicleMakeName,
                               vehicleModelName,
                               color,
                               licensePlate,
@@ -133,7 +149,7 @@ const VehicleTable = ({ type, rowData }) => {
       </Box>
       <Modal open={isEditModalOpen}>
         <Box sx={classes.modalWrapper}>
-          <VehicleForm onSave={onEditSave} onCancel={onEditCancel} defaults={editModalData} />
+          <VehicleForm onSave={onEditSave} onCancel={onEditCancel}   defaults={editModalData} />
         </Box>
       </Modal>
     </>
@@ -146,7 +162,7 @@ VehicleTable.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       year: PropTypes.string.isRequired,
-      makeName: PropTypes.string.isRequired,
+      vehicleMakeName: PropTypes.string.isRequired,
       vehicleModelName: PropTypes.string.isRequired,
       color: PropTypes.string.isRequired,
       licensePlate: PropTypes.string.isRequired,

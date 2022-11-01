@@ -30,7 +30,7 @@ const classes = {
 const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
   const [id, setId] = useState(defaults.id);
   const [year, setYear] = useState(defaults.year);
-  const [makeName, setMakeName] = useState(defaults.makeName);
+  const [vehicleMakeName, setVehicleMakeName] = useState(defaults.vehicleMakeName);
   const [vehicleModelName, setVehicleModelName] = useState(defaults.vehicleModelName);
   const [color, setColor] = useState(defaults.color);
   const [licensePlate, setLicensePlate] = useState(defaults.licensePlate);
@@ -39,7 +39,7 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
   const clearForm = () => {
     setId(defaults.id);
     setYear(defaults.year);
-    setMakeName(defaults.makeName);
+    setVehicleMakeName(defaults.vehicleMakeName);
     setVehicleModelName(defaults.vehicleModelName);
     setColor(defaults.color);
     setLicensePlate(defaults.licensePlate);
@@ -47,8 +47,8 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
   };
 
   const handleSaveClick = () => {
-    if (id && year && makeName && vehicleModelName && color && licensePlate && vin) {
-      onSave({ id, year, makeName, vehicleModelName, color, licensePlate, vin });
+    if (id && year && vehicleMakeName && vehicleModelName && color && licensePlate && vin) {
+      onSave({ id, year, vehicleMakeName, vehicleModelName, color, licensePlate, vin });
       clearForm();
     }
   };
@@ -69,10 +69,10 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
       />
       <TextField
         required
-        id="makeName"
+        id="vehicleMakeName"
         label="Make"
-        value={makeName}
-        onInput={(e) => setMakeName(e.target.value)}
+        value={vehicleMakeName}
+        onInput={(e) => setVehicleMakeName(e.target.value)}
       />
       <TextField
         required
@@ -107,8 +107,8 @@ const VehicleForm = ({ onSave, onCancel, defaults = defaultVehicleValues }) => {
           type="submit"
           color="primary"
           sx={classes.button}
-          onClick={(e) => {
-            e.preventDefault();
+          onClick={() => {
+            // e.preventDefault();
             handleSaveClick();
           }}
         >
@@ -126,8 +126,8 @@ VehicleForm.propTypes = {
   onSave: PropTypes.func.isRequired,
   onCancel: PropTypes.func,
   defaults: PropTypes.shape({
-    // id: PropTypes.number.isRequired,
-    makeName: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    vehicleMakeName: PropTypes.string.isRequired,
     vehicleModelName: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
